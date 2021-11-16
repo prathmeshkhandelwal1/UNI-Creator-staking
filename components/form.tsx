@@ -44,7 +44,7 @@ const Form = () => {
         console.log(uniContract.methods);
 
         const recipt = await uniContract.methods
-          .approve(stakingAddress, parseInt(approvevalue))
+          .approve(stakingAddress, web3.utils.toWei(approvevalue, "ether"))
           .send({
             from: accounts[0],
           });
@@ -54,7 +54,7 @@ const Form = () => {
           .call();
         console.log(allowance);
         if (allowance) {
-          setAllowanceAmount(allowance);
+          setAllowanceAmount(web3.utils.fromWei(allowance, "ether"));
         }
         toast.success("Approved", {
           id: loadingToast,
@@ -84,7 +84,10 @@ const Form = () => {
           .allowance(accounts[0], stakingAddress)
           .call();
         console.log(allowance);
-        if (parseInt(stakingAmount) > parseInt(allowance)) {
+        if (
+          parseInt(stakingAmount) >
+          parseInt(web3.utils.fromWei(allowance, "ether"))
+        ) {
           toast.error("Staking value can not be more than approve value!", {
             id: loadingToast,
           });
@@ -107,7 +110,7 @@ const Form = () => {
           return;
         }
         const stakereciept = await stakingContract.methods
-          .stake(parseInt(stakingAmount))
+          .stake(web3.utils.toWei(stakingAmount, "ether"))
           .send({
             from: accounts[0],
           });
@@ -141,8 +144,8 @@ const Form = () => {
           from: accounts[0],
         });
       console.log(balance);
-      setBalance(balance);
-      setReward(reward);
+      setBalance(web3.utils.fromWei(balance, "ether"));
+      setReward(web3.utils.fromWei(reward, "ether"));
     } catch (e) {
       console.log(e);
     }

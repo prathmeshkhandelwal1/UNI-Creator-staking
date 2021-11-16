@@ -13,7 +13,7 @@ const NavBar = () => {
           color="foreground"
           fontWeight="bold"
         >
-          Staking Uniswap
+          Staking Uni-creator
         </Box>
         <div style={{ display: "flex", alignItems: "center" }}>
           <ConnectWallet />

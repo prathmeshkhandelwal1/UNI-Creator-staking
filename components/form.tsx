@@ -13,8 +13,8 @@ const Form = () => {
   const [balance, setBalance] = useState<string>("");
   const [reward, setReward] = useState<string>("");
 
-  const stakingAddress = "0xb16c6e435DEC2373B614d44fD261048690fe0f8D";
-  const uniAddress = "0x25F4671F0b4C11a870fDcfB69600A01056077CBF";
+  const stakingAddress = "0xAB2C3858c70D96a8339Bf58253381608592574d6";
+  const uniAddress = "0xb1E0D95326DC0c70d99080FdA8a6091132708a7e";
 
   // useEffect(() => {
   //   console.log("hey from form");
